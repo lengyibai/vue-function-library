@@ -22,7 +22,7 @@ export const appear_animat = {
       }
     },
     appear_animat(el, animat) {
-      if (this.$refs[el] instanceof Array) {
+      if (this.$refs[el].length) {
         this.$refs[el].forEach(item => {
           this.lyb(item, animat);
         });
