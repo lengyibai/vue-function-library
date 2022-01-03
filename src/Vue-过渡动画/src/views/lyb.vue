@@ -3,7 +3,6 @@
     <transition-group name="del" appear>
       <div
         class="box"
-        :style="{ transitionDelay: index / 10 + 's' }"
         v-for="(item, index) in arr"
         @click="remove(index)"
         :key="item"
@@ -74,7 +73,7 @@
     }
   }
   .del-enter {
-    transform: translateX(-100%) rotate(-180deg) !important;
+    transform: translateX(-100%) rotate(-180deg) scale(0) !important;
     opacity: 0;
   }
 
