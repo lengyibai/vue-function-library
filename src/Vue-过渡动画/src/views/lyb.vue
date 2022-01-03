@@ -11,11 +11,12 @@
         点击删除{{ item }}
       </div>
     </transition-group>
+    <div class="box" ref="lyb"></div>
   </div>
 </template>
 <script>
   import { $lybF5 } from './lyb.js';
-  import { appear_animat } from './minxin.js';
+  import { appear_animate } from './appear_animate.js';
   export default {
     name: 'lyb',
     data() {
@@ -24,7 +25,7 @@
         $lybF5: null,
       };
     },
-    mixins: [appear_animat],
+    mixins: [appear_animate],
     created() {
       let arr = [];
       let i = 0;
@@ -35,7 +36,7 @@
       this.arr.push(...arr);
       this.$lybF5 = $lybF5(
         function() {
-          this.appear_animat('box');
+          this.$lybS2({ el: ['box', 'lyb'] });
         }.bind(this),
         100,
       );
