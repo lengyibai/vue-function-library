@@ -2,7 +2,6 @@ import Vue from 'vue';
 import App from './App.vue';
 import less from 'less';
 Vue.use(less);
-import '@/common/flexible.js';
 import './assets/css/default.css';
 
 Vue.config.productionTip = false;
