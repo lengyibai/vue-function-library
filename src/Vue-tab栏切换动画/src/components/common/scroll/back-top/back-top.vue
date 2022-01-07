@@ -10,7 +10,7 @@
 </template>
 <script>
   export default {
-    name: 'lybBackTop',
+    name: 'back-top',
     props: {
       //更换返回顶部图标，引入本地图片方式要使用require，和下面一致
       imgUrl: {
@@ -25,25 +25,26 @@
         default: '50px',
       },
     },
+    data() {
+      return {};
+    },
     methods: {
       backTop() {
-        const scrollBox = this.$parent.$refs.scroll;
-        scrollBox.scrollTop = 250;
-        (function fn() {
-          if (scrollBox.scrollTop <= 0) return;
-          scrollBox.scrollTop -= scrollBox.scrollTop / 5;
-          requestAnimationFrame(fn);
-        })();
+        const scrollBox = this.$parent;
+        scrollBox.scrollTo(0, -250, 0);
+        setTimeout(() => {
+          scrollBox.scrollTo(0, 0, 250);
+        });
       },
     },
   };
 </script>
 <style scoped>
   .back-top {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
     right: 5%;
     bottom: 0;
     box-sizing: border-box;
