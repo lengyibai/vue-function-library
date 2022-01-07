@@ -1,14 +1,14 @@
 <template>
   <div class="App">
-    <lyb />
+    <multi-column />
   </div>
 </template>
 <script>
-  import lyb from './views/home/lyb1';
+  import MultiColumn from './views/home/MultiColumn.vue';
   export default {
     name: '',
     components: {
-      lyb,
+      MultiColumn,
     },
   };
 </script>
