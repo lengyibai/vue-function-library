@@ -40,17 +40,17 @@ body {
 }
 
 *::-webkit-scrollbar {
-  width: 0.1333rem;
-  height: 0.1333rem;
+  width: 5px;
+  height: 5px;
 }
 
 *::-webkit-scrollbar-track {
-  border-radius: 0.1333rem;
+  border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
   background: #ccc;
-  border-radius: 0.1333rem;
+  border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
@@ -102,7 +102,7 @@ button,
 input,
 select,
 textarea {
-  border: 0.0133rem solid #fff;
+  border: .9975px solid #fff;
   background-color: transparent;
   outline: none;
   -webkit-appearance: none;
@@ -134,8 +134,8 @@ table {
 th,
 td {
   text-align: center;
-  padding: 0.0667rem;
-  border: 0.0133rem solid #fff;
+  padding: 5.0025px;
+  border: .9975px solid #fff;
 }
 
 thead {
