@@ -105,19 +105,18 @@
     .slide {
       display: flex;
       width: 100%;
-      height: calc(100vh - 53px);
+      height: calc(100vh - 50px);
       transition: all 0.25s;
       .box {
         width: 100%;
-        font-size: 25px;
         overflow: hidden;
         flex-shrink: 0;
         .better-content {
-          width: 100%;
-          color: #fff;
           display: flex;
           flex-direction: column;
           align-items: center;
+          font-size: 25px;
+          color: #fff;
         }
       }
     }
