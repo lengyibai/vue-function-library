@@ -53,13 +53,10 @@
 </script>
 <style scoped lang="less">
   .SingleMultiple {
-    width: 100vw;
-    height: 100vh;
     background-color: #000;
     overflow: hidden;
     // tab栏整体
     .tab {
-      position: relative;
       height: 50px;
       display: flex;
       flex-direction: row;
