@@ -1,8 +1,6 @@
-import axios from 'axios';
-import apiConfig from '../config/api.config';
+import axios from './axios';
 
 //!··········配置默认参数··········!//
-axios.defaults.baseURL = apiConfig.baseURL;
 axios.defaults.timeout = 30000;
 
 //!··········配置默认请求··········!//
