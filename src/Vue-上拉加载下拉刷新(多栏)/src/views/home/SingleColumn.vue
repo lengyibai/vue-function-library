@@ -7,6 +7,7 @@
       :status="status"
       themeColor="white"
       ref="scroll1"
+      top="50px"
     >
       <div class="content">
         <li v-for="(item, index) in data1.list" :key="index" ref="card">
@@ -33,7 +34,6 @@
       };
     },
     methods: {
-      fn() {},
       //@请求封装
       getDataReq(page) {
         // 使用 promise 发送向外传递请求状态
@@ -62,11 +62,11 @@
         this.data1.list = [];
         this.getDataReq(1)
           .then(res => {
-            console.log(res);
+            // 刷新成功回调
             this.$refs.scroll1.refreshSuccess(res);
           })
           .catch(err => {
-            console.log(err);
+            // 刷新失败回调
             this.$refs.scroll1.refreshSuccess(err);
           });
       },
@@ -75,11 +75,13 @@
         let page = this.data1.page;
         this.getDataReq(page)
           .then(status => {
+            // 上拉加载成功回调
             this.$refs.scroll1.loadSuccess(status);
             this.data1.page++;
-            if (this.data1.page == 20) this.data1.page = 20;
+            if (this.data1.page == 3) this.data1.page = 20;
           })
           .catch(err => {
+            // 上拉加载失败回调
             this.$refs.scroll1.loadSuccess(err);
           });
       },
@@ -88,15 +90,12 @@
 </script>
 <style scoped lang="less">
   .lyb {
-    display: flex;
-    justify-content: center;
     .scroll {
       .content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         li {
           display: flex;
+          justify-content: center;
+          align-items: center;
           word-break: break-all;
           white-space: nowrap;
           text-overflow: ellipsis;
