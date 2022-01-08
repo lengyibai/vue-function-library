@@ -427,13 +427,9 @@
   .lyb {
     overflow: hidden;
     .scroll {
-      position: relative;
       width: 100vw;
-      overflow-x: hidden;
+      overflow-y: auto;
       .content {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
         .status {
           display: flex;
           flex-direction: column;

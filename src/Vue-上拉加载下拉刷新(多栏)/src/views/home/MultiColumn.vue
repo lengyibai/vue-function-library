@@ -13,9 +13,13 @@
       </div>
     </div>
     <div class="slide" ref="box">
-      <div class="box1"><single-column></single-column></div>
-      <div class="box1"><single-column></single-column></div>
-      <div class="box1"><single-column></single-column></div>
+      <div class="box"><single-column></single-column></div>
+      <div class="box">
+        <single-column v-if="cache[1]"></single-column>
+      </div>
+      <div class="box">
+        <single-column v-if="cache[2]"></single-column>
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +32,8 @@
       return {
         tabName: ['one', 'two', 'three'],
         currentIndex: 0,
+        // tab栏标签页懒加载
+        cache: [true, false, false],
       };
     },
     components: {
@@ -37,6 +43,8 @@
     methods: {
       //@tab栏点击
       tabClick(index) {
+        // tab栏标签页懒加载
+        this.cache[index] = true;
         this.currentIndex = index;
         this.$refs.box.style.transform = `translateX(-${index * 100}%)`;
       },
@@ -51,11 +59,12 @@
     overflow: hidden;
     // tab栏整体
     .tab {
+      position: relative;
+      height: 50px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       color: #fff;
-      height: 50px;
       // tab栏标签
       .tab-item {
         flex: 1;
@@ -71,21 +80,9 @@
     // 滑动位置
     .slide {
       display: flex;
-      width: 100%;
-      height: calc(100vh - 53px);
       transition: all 0.25s;
       .box {
-        width: 100%;
-        font-size: 25px;
-        overflow: hidden;
-        flex-shrink: 0;
-        .better-content {
-          width: 100%;
-          color: #fff;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
+        height: 100%;
       }
     }
   }
