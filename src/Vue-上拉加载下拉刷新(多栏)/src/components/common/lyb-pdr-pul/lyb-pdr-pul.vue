@@ -1,97 +1,102 @@
 <template>
-  <div
-    class="scroll"
-    ref="scroll"
-    @scroll="scroll"
-    @touchstart="down($event)"
-    @touchmove="setTopheight($event)"
-    @touchend="up()"
-    :style="{ height: 'calc(100vh - ' + bottom + ' - ' + top + ')' }"
-  >
-    <!-- 下拉盒子 -->
+  <div class="lyb">
     <div
-      class="top"
-      :style="{ height: `${downBoxHeight}px`, backgroundColor: downBoxBgColor }"
-      ref="top"
+      class="scroll"
+      ref="scroll"
+      @scroll="scroll"
+      @touchstart="down($event)"
+      @touchmove="setTopheight($event)"
+      @touchend="up()"
+      :style="{ height: 'calc(100vh - ' + bottom + ' - ' + top + ')' }"
     >
-      <!-- 下拉图片 -->
-      <img
-        class="icon refresh"
-        ref="refresh"
-        v-show="!isRefreshing"
-        :src="themeColor == 'white' ? arrowIcon[1] : arrowIcon[0]"
-      />
-      <!-- 加载图片 -->
-      <img
-        class="icon"
-        :class="{ rotate: isRefreshing }"
-        :src="themeColor == 'white' ? loadingIcon[1] : loadingIcon[0]"
-        v-show="isRefreshing && !isSuccess && !isErrRefresh"
-      />
-      <!-- 成功图片 -->
-      <img
-        class="icon"
-        :src="themeColor == 'white' ? successIcon[1] : successIcon[0]"
-        v-show="isSuccess"
-      />
-      <!-- 失败图片 -->
-      <img
-        class="icon"
-        :src="themeColor == 'white' ? failIcon[1] : failIcon[0]"
-        v-show="isErrRefresh"
-      />
-      <span class="font">{{ downRefreshText }}</span>
-    </div>
-    <!-- 下拉盒子 -->
-    <!-- 滚动内容 -->
-    <div
-      class="content"
-      ref="content"
-      :style="{ minHeight: 'calc(100% - ' + upBoxHeight + ')' }"
-    >
-      <div class="status" v-show="!!status">
-        <img :src="statusImg" />
-        <span>{{ statusText }}</span>
+      <!-- 下拉盒子 -->
+      <div
+        class="top"
+        :style="{
+          height: `${downBoxHeight}px`,
+          backgroundColor: downBoxBgColor,
+        }"
+        ref="top"
+      >
+        <!-- 下拉图片 -->
+        <img
+          class="icon refresh"
+          ref="refresh"
+          v-show="!isRefreshing"
+          :src="themeColor == 'white' ? arrowIcon[1] : arrowIcon[0]"
+        />
+        <!-- 加载图片 -->
+        <img
+          class="icon"
+          :class="{ rotate: isRefreshing }"
+          :src="themeColor == 'white' ? loadingIcon[1] : loadingIcon[0]"
+          v-show="isRefreshing && !isSuccess && !isErrRefresh"
+        />
+        <!-- 成功图片 -->
+        <img
+          class="icon"
+          :src="themeColor == 'white' ? successIcon[1] : successIcon[0]"
+          v-show="isSuccess"
+        />
+        <!-- 失败图片 -->
+        <img
+          class="icon"
+          :src="themeColor == 'white' ? failIcon[1] : failIcon[0]"
+          v-show="isErrRefresh"
+        />
+        <span class="font">{{ downRefreshText }}</span>
       </div>
-      <slot></slot>
-    </div>
-    <!-- 滚动内容 -->
-    <!-- 上拉盒子 -->
-    <div
-      class="bottom"
-      :class="{
-        hide: !isUploading && !isFinish && !isErrload,
-      }"
-      ref="bottom"
-      :style="{ height: upBoxHeight, backgroundColor: upBoxBgColor }"
-      v-show="isFinishRefresh"
-    >
-      <img
-        class="icon rotate"
-        :src="themeColor == 'white' ? loadingIcon[1] : loadingIcon[0]"
-        v-show="!isFinish && !isErrload"
-      />
-      <img
-        class="icon"
-        :src="themeColor == 'white' ? noMoreIcon[1] : noMoreIcon[0]"
-        v-show="isFinish"
-      />
-      <img
-        class="icon"
-        :src="themeColor == 'white' ? failIcon[1] : failIcon[0]"
-        v-show="isErrload"
-      />
-      <span class="font">{{
-        isFinish ? '暂无更多' : isErrload ? '加载失败' : '加载中...'
-      }}</span>
+      <!-- 下拉盒子 -->
+      <!-- 滚动内容 -->
+      <div
+        class="content"
+        ref="content"
+        :style="{ minHeight: 'calc(100% - ' + upBoxHeight + ')' }"
+      >
+        <div class="status" v-show="!!status">
+          <img :src="statusImg" />
+          <span>{{ statusText }}</span>
+        </div>
+        <slot></slot>
+      </div>
+      <!-- 滚动内容 -->
+      <!-- 上拉盒子 -->
+      <div
+        class="bottom"
+        :class="{
+          hide: !isUploading && !isFinish && !isErrload,
+        }"
+        ref="bottom"
+        :style="{ height: upBoxHeight, backgroundColor: upBoxBgColor }"
+        v-show="isFinishRefresh"
+      >
+        <img
+          class="icon rotate"
+          :src="themeColor == 'white' ? loadingIcon[1] : loadingIcon[0]"
+          v-show="!isFinish && !isErrload"
+        />
+        <img
+          class="icon"
+          :src="themeColor == 'white' ? noMoreIcon[1] : noMoreIcon[0]"
+          v-show="isFinish"
+        />
+        <img
+          class="icon"
+          :src="themeColor == 'white' ? failIcon[1] : failIcon[0]"
+          v-show="isErrload"
+        />
+        <span class="font">{{
+          isFinish ? '暂无更多' : isErrload ? '加载失败' : '加载中...'
+        }}</span>
+      </div>
     </div>
     <back-top :show="backTopShow" />
   </div>
 </template>
 <script>
-  import backTop from './back-top/back-top';
+  import backTop from './back-top/back-top.vue';
   export default {
-    name: 'lybPdrPul',
+    name: 'lyb-pdr-pul',
     components: { backTop },
     props: {
       // 顶部外边距
@@ -127,12 +132,12 @@
       // 图标大小
       iconSize: {
         type: String,
-        default: '54px',
+        default: '35px',
       },
       // 字体大小
       fontSize: {
         type: String,
-        default: '36px',
+        default: '25px',
       },
       // 主题色
       themeColor: {
@@ -264,7 +269,6 @@
     methods: {
       //!··········滚动触发··········!//
       scroll() {
-        this.$emit('scroll', this.$refs.scroll.scrollTop);
         // 滚动触发上拉加载
         this.loading();
         // 是否显示回到顶部
@@ -420,52 +424,56 @@
   };
 </script>
 <style scoped lang="less">
-  .scroll {
-    position: relative;
-    width: 100vw;
-    overflow-x: hidden;
-    .content {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      .status {
+  .lyb {
+    overflow: hidden;
+    .scroll {
+      position: relative;
+      width: 100vw;
+      overflow-x: hidden;
+      .content {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        .status {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          inset: 0;
+          img {
+            width: 50%;
+            margin-bottom: 25px;
+          }
+          span {
+            font-size: 25px;
+          }
+        }
+      }
+      .top,
+      .bottom {
+        display: flex;
         justify-content: center;
+        width: 100%;
+        height: 75px;
+        overflow: hidden;
+      }
+      .top {
         align-items: center;
-        position: absolute;
-        inset: 0;
-        img {
-          width: 50%;
-          margin-bottom: 25px;
+        .refresh {
+          transform: rotateZ(0deg);
         }
         span {
           font-size: 25px;
         }
       }
-    }
-    .top,
-    .bottom {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      height: 75px;
-      overflow: hidden;
-    }
-    .top {
-      align-items: center;
-      .refresh {
-        transform: rotateZ(0deg);
+      .bottom {
+        transition: all 0.25s;
+        align-items: center;
       }
-      span {
-        font-size: 25px;
-      }
-    }
-    .bottom {
-      transition: all 0.25s;
-      align-items: center;
     }
   }
+
   .icon {
     margin-right: 10px;
   }
