@@ -14,7 +14,7 @@
   // import ObserveDOM from '@better-scroll/observe-dom';
   // BScroll.use(ObserveDOM);
   // BScroll.use(ObserveImage);
-  import backTop from '../back-top';
+  import backTop from './back-top';
   export default {
     name: 'index',
     components: { backTop },
