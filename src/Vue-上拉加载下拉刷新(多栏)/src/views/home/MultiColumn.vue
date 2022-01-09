@@ -13,13 +13,9 @@
       </div>
     </div>
     <div class="slide" ref="box">
-      <div class="box"><single-column></single-column></div>
-      <div class="box">
-        <single-column v-if="cache[1]"></single-column>
-      </div>
-      <div class="box">
-        <single-column v-if="cache[2]"></single-column>
-      </div>
+      <single-column></single-column>
+      <single-column v-if="cache[1]"></single-column>
+      <single-column v-if="cache[2]"></single-column>
     </div>
   </div>
 </template>
@@ -78,9 +74,6 @@
     .slide {
       display: flex;
       transition: all 0.25s;
-      .box {
-        height: 100%;
-      }
     }
   }
   .active {
