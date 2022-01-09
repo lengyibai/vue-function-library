@@ -1,5 +1,5 @@
 <template>
-  <div class="lyb">
+  <div class="lyb-pdr-pul">
     <div
       class="scroll"
       ref="scroll"
@@ -424,10 +424,10 @@
   };
 </script>
 <style scoped lang="less">
-  .lyb {
-    overflow: hidden;
+  .lyb-pdr-pul {
+    // 返回顶部用到了绝对定位，则此处定位必须加
+    position: relative;
     .scroll {
-      width: 100vw;
       overflow-y: auto;
       .content {
         .status {
@@ -443,6 +443,7 @@
           }
           span {
             font-size: 25px;
+            color: #ccc;
           }
         }
       }
