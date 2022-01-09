@@ -13,20 +13,32 @@
       </div>
     </div>
     <div class="slide" ref="box">
-      <div class="box wrapper1">
-        <div class="better-content">
-          <p v-for="(item, index) in 100" :key="index">{{ item }}</p>
+      <!-- 第一个 -->
+      <div class="lyb">
+        <div class="box" ref="scroll1">
+          <div class="better-content">
+            <p v-for="(item, index) in 100" :key="index">{{ item }}</p>
+          </div>
         </div>
+        <back-top :show="backTopShow[0]" :father="scroll.scroll1" />
       </div>
-      <div class="box wrapper2">
-        <div class="better-content">
-          <p v-for="(item, index) in 100" :key="index">{{ item }}</p>
+      <!-- 第二个 -->
+      <div class="lyb">
+        <div class="box" ref="scroll2">
+          <div class="better-content">
+            <p v-for="(item, index) in 100" :key="index">{{ item }}</p>
+          </div>
         </div>
+        <back-top :show="backTopShow[1]" :father="scroll.scroll2" />
       </div>
-      <div class="box wrapper3">
-        <div class="better-content">
-          <p v-for="(item, index) in 100" :key="index">{{ item }}</p>
+      <!-- 第三个 -->
+      <div class="lyb">
+        <div class="box" ref="scroll3">
+          <div class="better-content">
+            <p v-for="(item, index) in 100" :key="index">{{ item }}</p>
+          </div>
         </div>
+        <back-top :show="backTopShow[2]" :father="scroll.scroll3" />
       </div>
     </div>
   </div>
@@ -38,6 +50,7 @@
   // import ObserveDOM from '@better-scroll/observe-dom';
   // BScroll.use(ObserveDOM);
   // BScroll.use(ObserveImage);
+  import backTop from './back-top/back-top.vue';
   export default {
     props: {},
     data() {
@@ -46,11 +59,11 @@
         currentIndex: 0,
         top: '0px',
         bottom: '0px',
-        scroll: null,
-        backTopShow: false,
+        scroll: { scroll1: null, scroll2: null, scroll3: null },
+        backTopShow: [false, false, false],
       };
     },
-    created() {
+    mounted() {
       let attr = {
         // observeImage: true,
         // observeDOM: true,
@@ -60,18 +73,36 @@
         probeType: 3,
       };
       this.$nextTick(() => {
-        this.scroll1 = new BScroll('.wrapper1', attr);
-        this.scroll2 = new BScroll('.wrapper2', attr);
-        this.scroll3 = new BScroll('.wrapper3', attr);
+        Object.keys(this.scroll).forEach(item => {
+          this.scroll[item] = new BScroll(this.$refs[item], attr);
+        });
+        //监听滚动位置
+        Object.keys(this.scroll).forEach((item, index) => {
+          this.scroll[item].on('scroll', position => {
+            this.$set(
+              this.backTopShow,
+              index,
+              -position.y > this.$refs[item].clientHeight,
+            );
+          });
+        });
       });
     },
-    components: {},
+    components: { backTop },
     ////···············methods···············////
     methods: {
       //@tab栏点击
       tabClick(index) {
         this.currentIndex = index;
         this.$refs.box.style.transform = `translateX(-${index * 100}%)`;
+      },
+
+      scrollTo(x, y, time = 300) {
+        this.scroll1.scrollTo(x, y, time);
+      },
+
+      refresh() {
+        this.scroll1 && this.scroll1.refresh();
       },
     },
   };
@@ -107,16 +138,21 @@
       width: 100%;
       height: calc(100vh - 50px);
       transition: all 0.25s;
-      .box {
+      .lyb {
+        position: relative;
+        display: flex;
         width: 100%;
-        overflow: hidden;
         flex-shrink: 0;
-        .better-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          font-size: 25px;
-          color: #fff;
+        .box {
+          width: 100%;
+          overflow: hidden;
+          .better-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 25px;
+            color: #fff;
+          }
         }
       }
     }
