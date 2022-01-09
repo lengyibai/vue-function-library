@@ -1,5 +1,5 @@
 <template>
-  <div class="lyb">
+  <div class="SingleColumn">
     <lyb-pdr-pul
       class="scroll"
       @refreshing="refreshData1"
@@ -20,7 +20,7 @@
 <script>
   import { getData, GetData } from '@/network/API/home.js';
   export default {
-    name: 'lyb',
+    name: 'SingleColumn',
     data() {
       return {
         //!··········整体结构数据··········!//
@@ -89,7 +89,9 @@
   };
 </script>
 <style scoped lang="less">
-  .lyb {
+  .SingleColumn {
+    width: 100%;
+    flex-shrink: 0;
     .scroll {
       .content {
         li {
