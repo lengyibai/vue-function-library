@@ -1,39 +1,38 @@
 <template>
-  <div class="cardD">
+  <div class="card">
     <!-- 类别 -->
     <div class="type" @click="typeSelectClick(goodsList.type)">
       <select-button class="select" :isSelect="goodsList.isTypeSelect" />
-      <img src="./img/ic_sp .png" alt="" />
+      <img src="./img/ic_sp.png" alt="" />
       <span><slot name="type"></slot></span>
     </div>
     <!-- 商品卡片 -->
-    <div class="goods" v-for="(item, index) in goodsList.list" :key="index">
-      <select-button
-        class="select"
-        @click.native="selectClick(goodsList.type, item.id)"
-        :isSelect="item.isSelect"
-      />
-      <img src="@/assets/img/head.jpg" alt="" />
-      <!-- 商品信息 -->
-      <div class="message">
-        <div class="name">{{ item.name }}</div>
-        <div class="other">{{ item.other }}</div>
-        <div class="box">
-          <div class="price">
-            <span>$</span>
-            <span>{{ item.price }}</span>
+
+    <transition-group name="del" appear>
+      <div class="goods" v-for="item in goodsList.list" :key="item.id">
+        <select-button
+          class="select"
+          @click.native="selectClick(goodsList.type, item.id)"
+          :isSelect="item.isSelect"
+        />
+        <img :src="item.img" alt="" />
+        <!-- 商品信息 -->
+        <div class="message">
+          <div class="name">{{ item.name }}</div>
+          <div class="box">
+            <div class="price">
+              <span>￥</span>
+              <span>{{ item.price }}</span>
+            </div>
+            <div class="stepper">
+              <div class="sub" @click="sub(item)"></div>
+              <span class="count">{{ item.num }}</span>
+              <div class="add" @click="add(item)"></div>
+            </div>
           </div>
-          <van-stepper
-            @change="sendNum(item.id, item.num)"
-            v-model="item.num"
-            theme="round"
-            button-size="0.5333rem"
-            disable-input
-            input-width="0.64rem"
-          />
         </div>
       </div>
-    </div>
+    </transition-group>
   </div>
 </template>
 
@@ -65,64 +64,81 @@
       },
     },
     components: { SelectButton },
+    methods: {
+      // 商品数量--
+      sub(item) {
+        if (item.num <= 0) return;
+        item.num--;
+        // 发送被改变的商品数据
+        this.sendNum(item.id, Number(item.num));
+      },
+      // 商品数量++
+      add(item) {
+        item.num++;
+        // 发送被改变的商品数据
+        this.sendNum(item.id, Number(item.num));
+      },
+    },
   };
 </script>
 <style scoped lang="less">
-  .cardD {
-    padding: 0.4267rem;
+  @size1: 25px;
+  @size2: 20px;
+  @marpad: 20px;
+  .card {
+    padding: @marpad 10px;
     background-color: #fff;
-    margin-bottom: 0.2667rem;
+    margin-bottom: @marpad;
     .type {
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-bottom: 0.5733rem;
+      margin-bottom: @marpad;
       .select {
-        width: 0.4267rem;
-        height: 0.4267rem;
-        margin-right: 0.32rem;
+        width: @size1;
+        height: @size1;
+        margin-right: 15px;
       }
       img {
-        width: 0.4267rem;
-        height: 0.4267rem;
-        margin-right: 0.1733rem;
+        width: @size1;
+        height: @size1;
+        margin-right: 15px;
       }
       span {
-        font-size: 0.3733rem;
-        font-family: PingFang SC;
+        font-size: @size1;
         font-weight: bold;
       }
     }
     .goods {
       display: flex;
       align-items: center;
-      margin-bottom: 0.5467rem;
+      margin-bottom: @marpad;
+      height: 75px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
       .select {
-        width: 0.4267rem;
-        height: 0.4267rem;
-        margin-right: 0.32rem;
+        width: @size1;
+        height: @size1;
+        margin-right: 15px;
       }
       img {
-        width: 2.4rem;
-        height: 2.4rem;
+        height: 100%;
         object-fit: cover;
-        margin-right: 0.3067rem;
-        border-radius: 0.1333rem;
+        margin-right: 15px;
+        border-radius: 10px;
       }
       .message {
         flex: 1;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
         .name {
-          font-size: 0.3733rem;
+          font-size: @size2;
           font-family: PingFang SC;
           font-weight: 400;
-          margin-bottom: 0.2133rem;
-        }
-        .other {
-          font-size: 0.2667rem;
-          font-family: PingFang SC;
-          font-weight: 400;
-          color: #b2b2b2;
-          margin-bottom: 0.4133rem;
+          margin-bottom: 15px;
         }
         .box {
           display: flex;
@@ -130,9 +146,59 @@
           justify-content: space-between;
           .price {
             span {
-              font-size: 0.4267rem;
-              font-family: DINOT;
+              font-size: @size2;
               font-weight: bold;
+            }
+          }
+          .stepper {
+            display: flex;
+            align-items: center;
+            .sub,
+            .add {
+              position: relative;
+              width: @size2;
+              height: @size2;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 50%;
+            }
+            .sub {
+              border: 2px solid #000;
+              &::before {
+                position: absolute;
+                width: 50%;
+                height: 2px;
+                background-color: #000;
+                content: '';
+              }
+            }
+            .add {
+              background-color: #000;
+              .style {
+                position: absolute;
+                width: 50%;
+                height: 2px;
+                background-color: #fff;
+                content: '';
+              }
+              &::before {
+                .style();
+              }
+              &::after {
+                .style();
+                transform: rotate(90deg);
+              }
+            }
+            .count {
+              width: @size2;
+              font-size: @size2;
+              margin: 0 10px;
+              border: none;
+              text-align: center;
+              &:focus {
+                border: 1px solid #333;
+              }
             }
           }
         }

@@ -5,28 +5,16 @@
         <div class="select">
           <select-button :isSelect="isAllSelect" />
         </div>
-        <div class="clear">清空购物车</div>
+        <div class="clear">全选</div>
       </div>
       <div class="total">
         <span>合计：</span>
-        <span>$</span>
+        <span>￥</span>
         <span>{{ total }}</span>
       </div>
     </div>
-    <div class="box2" v-show="box2">
-      <span>实付款：</span>
-      <span>$</span>
-      <span>78</span>
-    </div>
-    <input
-      placeholder="写下你的评价"
-      type="text"
-      v-model="value"
-      v-show="input"
-      @input="evaluate"
-    />
-    <div class="box3" @click="fn">
-      <slot name="box3"></slot>
+    <div class="box2" @click="fn">
+      <slot name="box2"></slot>
     </div>
   </div>
 </template>
@@ -58,11 +46,6 @@
         type: Number,
         default: 0,
       },
-      //是否显示输入框
-      input: {
-        type: Boolean,
-        default: false,
-      },
       // 点击底部按钮后触发的函数
       fn: {
         type: Function,
@@ -79,90 +62,57 @@
         default: false,
       },
     },
-    data() {
-      return {
-        value: '',
-      };
-    },
     components: { SelectButton },
-    methods: {
-      //输入评价
-      evaluate() {
-        this.$emit('value', this.value);
-      },
-    },
   };
 </script>
 <style scoped lang="less">
+  @fontsize: 20px;
   .tabBar {
-    position: fixed;
-    width: 100vw;
-    height: 1.9733rem;
+    position: absolute;
+    width: 100%;
+    height: 75px;
     bottom: 0;
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 0.44rem;
+    padding: 0 10px;
     background-color: #fff;
-    border: 1px solid #ccc;
-    input {
-      height: 1.3333rem;
-      margin-right: 0.2133rem;
-      border: none;
-      background: #f8f8f8;
-      border-radius: 0.2133rem 0rem 0.2133rem 0.2133rem;
-      font-size: 0.3733rem;
-      font-family: PingFang SC;
-      font-weight: 400;
-      color: #000;
-      padding-left: 0.2933rem;
-    }
+    border: 1px solid #eee;
     .box1 {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      width: 5.84rem;
-      margin-right: 0.5333rem;
+      width: 200px;
+      margin-right: 15px;
       .left {
         display: flex;
-        flex-direction: row;
         align-items: center;
         .select {
-          width: 0.4267rem;
-          height: 0.4267rem;
-          margin-right: 0.1733rem;
+          width: @fontsize;
+          height: @fontsize;
+          margin-right: 10px;
         }
         .clear {
-          font-size: 0.2667rem;
+          font-size: @fontsize;
           font-family: PingFang SC;
           font-weight: 400;
           color: #b8b9bd;
         }
       }
       .total {
-        font-size: 0.3733rem;
-        font-family: PingFang SC;
+        font-size: 18px;
         font-weight: bold;
-        color: #ff6d66;
       }
     }
     .box2 {
-      font-size: 0.3733rem;
-      font-family: PingFang SC;
-      font-weight: bold;
-      color: #ff6d66;
-      margin-right: 1.3867rem;
-    }
-    .box3 {
       flex: 1;
-      // 解决文字居中问题
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 1.3333rem;
+      height: 50px;
       background: #151518;
-      border-radius: 0.2133rem;
-      font-size: 0.4267rem;
+      border-radius: 15px;
+      font-size: @fontsize;
       font-family: PingFang SC;
       font-weight: bold;
       color: #ffffff;

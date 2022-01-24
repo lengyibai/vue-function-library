@@ -14,7 +14,7 @@
       <slot name="title"></slot>
     </div>
     <!-- 右边内容 -->
-    <div class="btn" v-show="rightShow" @click="right">
+    <div class="btn" v-show="rightShow" @click="prop_right">
       <slot name="rightImg"></slot>
       <span :style="{ color: textRightColor }">
         <slot name="btn"></slot>
@@ -84,8 +84,10 @@
         default: 'white',
       },
       //传入右边按钮的跳转路径
-      pathRight: {
-        default: '',
+      prop_right: {
+        type: Function,
+        required: true,
+        default() {},
       },
     },
     data() {
@@ -104,11 +106,6 @@
           this.$router.push(this.pathLeft);
         }
       },
-      right() {
-        if (this.pathRight != '') {
-          this.$router.push(this.pathRight);
-        }
-      },
     },
   };
 </script>
@@ -120,42 +117,19 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 1rem;
-    z-index: 999;
+    height: 50px;
     background-color: #fff;
-    .back {
-      position: absolute;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      font-size: 0.3733rem;
-      line-height: 0.3733rem;
-      align-items: center;
-      height: 100%;
-      left: 0.3333rem;
-      img {
-        height: 0.5067rem;
-        margin-right: 0.0667rem;
-      }
-    }
     .title {
-      font-size: 0.4267rem;
-      line-height: 0.4267rem;
+      font-size: 26px;
       font-weight: bold;
     }
     .btn {
       position: absolute;
-      right: 0.3333rem;
+      right: 25px;
       display: flex;
       align-items: center;
       height: 100%;
-      img {
-        height: 0.5067rem;
-        padding-right: 0.0667rem;
-      }
-      span {
-        font-size: 0.32rem;
-      }
+      font-size: 20px;
     }
   }
 </style>

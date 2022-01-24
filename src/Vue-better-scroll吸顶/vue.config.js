@@ -1,5 +1,3 @@
-const path = require('path');
-const myTheme = path.resolve(__dirname, './src/plugins/vantChange.less');
 module.exports = {
   devServer: {
     port: 9527,
@@ -14,13 +12,4 @@ module.exports = {
     },
   },
   publicPath: './',
-  css: {
-    loaderOptions: {
-      less: {
-        modifyVars: {
-          hack: `true; @import "${myTheme}";`,
-        },
-      },
-    },
-  },
 };

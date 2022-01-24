@@ -1,9 +1,12 @@
 <template>
   <div class="app">
-    <router-view></router-view>
+    <index />
   </div>
 </template>
 
 <script>
-  export default {};
+  import index from './views/index';
+  export default {
+    components: { index },
+  };
 </script>

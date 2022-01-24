@@ -1,18 +1,13 @@
 <template>
   <div>
-    <lyb></lyb>
+    <index/>
   </div>
 </template>
 
 <script>
-  import lyb from './views/lyb.vue';
+  import index from './views/index.vue';
   export default {
-    data() {
-      return {
-        a: 'lyb',
-      };
-    },
-    components: { lyb },
+    components: { index },
   };
 </script>
 

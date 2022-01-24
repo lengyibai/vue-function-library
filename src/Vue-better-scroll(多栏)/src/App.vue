@@ -1,14 +1,13 @@
 <template>
   <div class="App">
-    <multi-column />
+    <index />
   </div>
 </template>
 <script>
-  import MultiColumn from './views/home/MultiColumn.vue';
+  import index from './views/index.vue';
   export default {
-    name: '',
     components: {
-      MultiColumn,
+      index,
     },
   };
 </script>
