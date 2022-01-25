@@ -176,18 +176,12 @@
       //支付
       payment() {
         if (this.getSelectData[0].length == 0) {
-          console.log(666)
           this.$toast.fail('您还未选择任何商品')
           return
         }
-        this.$dialog
-          .alert({
-            title: '支付失败',
+        this.$dialog({
             message:
               '购物车仅供展示，您选择了：【' + this.getSelectData[1] + '】',
-          })
-          .then(() => {
-            // on close
           })
       },
 
