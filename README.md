@@ -1,3 +1,9 @@
+<img src="http://lengyibai.gitee.io/img-bed/img/lyb.png" style="width:200px;margin:0 auto;border-radius:50%" />
+
+<p style="font-size:50px;font-weight:bold;width:100%;text-align:center;color:#fff;text-shadow:0 0 15px">冷弋白</p>
+<p style="text-align:center;color:#aaa;position: relative;top:-10px;text-shadow:0 0 10px"><a href='https://wpa.qq.com/msgrd?v=3&uin=1329670984&site=qq&menu=yes' style='text-decoration: none;
+'>点击此处联系我</a></p>
+
 # 介绍
 
 ## 01-锚点路由
@@ -137,4 +143,4 @@
 - 支持上传过程中添加文件继续上传，需要手动点击上传加入上传队列
 - 支持上传失败后可再次进行上传，需要手动点击开始上传
 - 支持清空列表，同时会取消所有上传请求
-- 支持清除已上传
+- 支持清除已上
