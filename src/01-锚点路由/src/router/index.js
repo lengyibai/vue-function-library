@@ -14,14 +14,11 @@ VueRouter.prototype.replace = function replace(location) {
 const routes = [
   {
     path: '/',
-    redirect: '/lyb/A',
+    redirect: '/A',
   },
   {
-    meta: {
-      title: '冷弋白的网页',
-    },
     name: 'lyb',
-    path: '/lyb/:page',
+    path: '/:page',
     component: () => import('../views/index.vue'),
   },
 ];
@@ -29,8 +26,4 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title;
-  next();
-});
 export default router;
