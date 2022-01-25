@@ -88,8 +88,6 @@
 </script>
 <style scoped lang="less">
   .SingleColumn {
-    width: 100%;
-    flex-shrink: 0;
     .scroll {
       .content {
         li {
