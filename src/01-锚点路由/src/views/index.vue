@@ -55,15 +55,15 @@
       };
     },
     /**
-     * 目前采用的是：方案1，推荐方案2
+     * 目前采用的是：方案2，推荐方案2
      * 方案1：滚动到指定位置，按钮样式跟随改变，地址栏也会跟随改变，点击按钮也会滚动到指定位置，但修改地址栏不会跳转，修改地址栏后需要手动刷新页面才会跳转
      * 方案2：除了滚动不会修改地址栏，需要点击按钮才会修改地址栏，其他功能与方案一一致，因为修改地址栏会触发实时监听地址栏，出现滚动错误，如果想自动修改地址栏，可以采用上面的方案
      * 解开79行-89行注释，注释119行到124行，Vue官网、gitee浏览md文件大纲等，就是采用的此方案
      * 但此方案唯一不足的是，用户需要点击按钮才会修改地址栏，这样影响用户收藏网站，可以根据项目需求考虑
      */
 
-    /* 方案二解开注释范围 Start */
-    /* beforeRouteUpdate(to, from, next) {
+    /* 方案一注释范围 Start */
+    beforeRouteUpdate(to, from, next) {
       // 获取下一个路由的地址栏参数，在坐标数组 themeTopYs 查找，获取它的坐标
       let y = this.themeTopYs.find((item, i) => {
         return item.name == to.params.page;
@@ -73,8 +73,8 @@
       // 将获取到的坐标用于滚动
       window.scrollTo({ behavior: 'smooth', top: y });
       next();
-    }, */
-    /* 方案二解开注释范围 End */
+    },
+    /* 方案一注释范围 End */
 
     mounted() {
       this.start();
@@ -109,15 +109,15 @@
             if (document.documentElement.scrollTop >= item.y) {
               this.currentIndex = item.name;
 
-              /* 方案二注释范围 Start */
+              /* 方案一解开注释范围 Start */
               // 滚动修改地址栏事件
-              this.$router.replace({
+              /* this.$router.replace({
                 name: 'lyb',
                 params: {
                   page: item.name,
                 },
-              });
-              /* 方案二注释范围 End */
+              }); */
+              /* 方案一解开注释范围 End */
             }
           });
         }, 100);
