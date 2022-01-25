@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0be144"],{"2f71":function(e,n,t){"use strict";t.r(n);var c=function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},l=[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"lyb"},[t("h1",[e._v("北京")])])}],s=t("2877"),r={},u=Object(s["a"])(r,c,l,!1,null,null,null);n["default"]=u.exports}}]);
+//# sourceMappingURL=chunk-2d0be144.e76b1f30.js.map
