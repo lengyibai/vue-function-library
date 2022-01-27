@@ -1,15 +1,16 @@
 <template>
   <div class="index">
-    <LybSearch
+    <lyb-search
       class="search"
       :data="data"
       :keyWord="['name', 'type']"
       @search="search"
       placeholder="支持名字、职业、拼音、简写"
       align="center"
-      fontSize="25px"
+      fontSize="20px"
+      v-model="value"
     />
-    <transition-group name="fade" appear class="list">
+    <transition-group name="fade" appear class="list" ref="list">
       <h2 class="hero" v-for="item in result" :key="item">{{ item.name }}：{{ item.type }}</h2>
     </transition-group>
   </div>
@@ -456,13 +457,22 @@ export default {
         },
       ],
       result: [],
+      value: '',
     };
   },
   components: { LybSearch },
   created() {
     this.result = this.data;
   },
+  watch: {
+    value() {
+      this.$refs.list.$el.scrollTop = 0;
+    },
+  },
   methods: {
+    fn() {
+      console.log(666);
+    },
     search(result) {
       this.result = result;
     },
@@ -480,16 +490,25 @@ export default {
   width: 100vw;
   height: 100vh;
   .search {
+    position: fixed;
     width: 100%;
     max-width: 500px;
-    margin-bottom: 50px;
+    padding: 0 25px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    z-index: 2;
   }
   .list {
-    width: 100%;
+    position: absolute;
+    inset: 0;
+    top: 50px;
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
+    overflow-x: hidden;
     .hero {
       width: calc(16.66% - 20px);
+      height: 35px;
       margin: 10px;
       text-align: center;
       @media screen and (max-width: 1170px) {

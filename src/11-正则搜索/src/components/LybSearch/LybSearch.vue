@@ -10,7 +10,7 @@
       @blur="blur"
       :style="{ fontSize: fontSize, paddingRight: 'calc(' + fontSize + ' + 5px)', textAlign: align }"
     />
-    <div class="clear" @mousedown="clear">
+    <div class="clear" @mousedown="clear" :style="{ right: 'calc(' + fontSize + ' + 5px)' }">
       <img src="./img/clear.svg" :style="{ width: fontSize, height: fontSize }" v-show="isShow" />
     </div>
   </div>
