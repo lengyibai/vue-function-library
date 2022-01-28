@@ -5,8 +5,8 @@
 </template>
 
 <script>
-  import index from './views/index';
-  export default {
-    components: { index },
-  };
+import index from './views/index';
+export default {
+  components: { index },
+};
 </script>

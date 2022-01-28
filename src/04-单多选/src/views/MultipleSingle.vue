@@ -39,181 +39,181 @@
   </div>
 </template>
 <script>
-  import selectButton from '@/components/selectButton/selectButton.vue';
-  export default {
-    props: {
-      lyb: {
-        type: Function,
-        default() {},
-      },
+import selectButton from '@/components/selectButton/selectButton.vue';
+export default {
+  props: {
+    lyb: {
+      type: Function,
+      default() {},
     },
-    components: { selectButton },
-    data() {
-      return {
-        currentIndex: 0,
-        data: [
-          {
-            id: 101,
-            name: '鼠',
-            isSelect: false,
-          },
-          {
-            id: 102,
-            name: '牛',
-            isSelect: false,
-          },
-          {
-            id: 103,
-            name: '虎',
-            isSelect: false,
-          },
-          {
-            id: 104,
-            name: '兔',
-            isSelect: false,
-          },
-        ],
-        isSelectAll: false,
-      };
-    },
-    created() {
-      // 获取tab栏标签数据
-      // this.getGoodList('1', 0);
-    },
-    computed: {
-      //获取被选中的值
-      getSelectData() {
-        return this.data
-          .filter(item => {
-            return item.isSelect;
-          })
-          .map(item => {
-            return item.name;
-          });
-      },
-    },
-    methods: {
-      tabClick(index) {
-        this.currentIndex = index;
-      },
-      //控制单选
-      selectClick(id) {
-        this.data.forEach(item => {
-          if (item.id == id) {
-            this.$set(item, 'isSelect', !item.isSelect);
-          }
-        });
-
-        //单个选中控制全选按钮
-        this.isSelectAll = this.data.every(item => {
+  },
+  components: { selectButton },
+  data() {
+    return {
+      currentIndex: 0,
+      data: [
+        {
+          id: 101,
+          name: '鼠',
+          isSelect: false,
+        },
+        {
+          id: 102,
+          name: '牛',
+          isSelect: false,
+        },
+        {
+          id: 103,
+          name: '虎',
+          isSelect: false,
+        },
+        {
+          id: 104,
+          name: '兔',
+          isSelect: false,
+        },
+      ],
+      isSelectAll: false,
+    };
+  },
+  created() {
+    // 获取tab栏标签数据
+    // this.getGoodList('1', 0);
+  },
+  computed: {
+    //获取被选中的值
+    getSelectData() {
+      return this.data
+        .filter((item) => {
           return item.isSelect;
+        })
+        .map((item) => {
+          return item.name;
         });
-      },
-      //全选
-      selectAll() {
-        this.isSelectAll = !this.isSelectAll;
-        this.data.forEach(item => {
-          this.$set(item, 'isSelect', this.isSelectAll);
-        });
-      },
-      //提交选中的值
-      sendData() {
-        this.$refs.card.forEach(item => {
-          item.style.left = '-0.3906rem';
-          item.style.top = -item.offsetTop + 75 + 'px';
-          setTimeout(() => {
-            item.style.opacity = '0';
-            setTimeout(() => {
-              item.style.transition = 'all 0s';
-              item.style.left = '0';
-              item.style.top = '0';
-              setTimeout(() => {
-                item.style.transition = 'all 0.75s';
-                item.style.opacity = '1';
-              }, 10);
-            }, 750);
-          }, 750);
-        });
-        this.lyb(this.getSelectData);
-      },
     },
-  };
+  },
+  methods: {
+    tabClick(index) {
+      this.currentIndex = index;
+    },
+    //控制单选
+    selectClick(id) {
+      this.data.forEach((item) => {
+        if (item.id == id) {
+          this.$set(item, 'isSelect', !item.isSelect);
+        }
+      });
+
+      //单个选中控制全选按钮
+      this.isSelectAll = this.data.every((item) => {
+        return item.isSelect;
+      });
+    },
+    //全选
+    selectAll() {
+      this.isSelectAll = !this.isSelectAll;
+      this.data.forEach((item) => {
+        this.$set(item, 'isSelect', this.isSelectAll);
+      });
+    },
+    //提交选中的值
+    sendData() {
+      this.$refs.card.forEach((item) => {
+        item.style.left = '-0.3906rem';
+        item.style.top = -item.offsetTop + 75 + 'px';
+        setTimeout(() => {
+          item.style.opacity = '0';
+          setTimeout(() => {
+            item.style.transition = 'all 0s';
+            item.style.left = '0';
+            item.style.top = '0';
+            setTimeout(() => {
+              item.style.transition = 'all 0.75s';
+              item.style.opacity = '1';
+            }, 10);
+          }, 750);
+        }, 750);
+      });
+      this.lyb(this.getSelectData);
+    },
+  },
+};
 </script>
 <style scoped lang="less">
-  * {
-    user-select: none;
-  }
-  .isSelect {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  .select {
-    width: 0.2rem;
-    height: 0.2rem;
-    margin-right: 0.04rem;
-  }
-  .app {
-    width: 2.008rem;
-    .tab {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      border: 0.016rem solid #fff;
-      .tab-item {
-        flex: 1;
-        text-align: center;
-        font-size: 0.16rem;
-        padding: 0.08rem 0;
-      }
+* {
+  user-select: none;
+}
+.isSelect {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.select {
+  width: 0.2rem;
+  height: 0.2rem;
+  margin-right: 0.04rem;
+}
+.app {
+  width: 2.008rem;
+  .tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 0.016rem solid #fff;
+    .tab-item {
+      flex: 1;
+      text-align: center;
+      font-size: 0.16rem;
+      padding: 0.08rem 0;
     }
-    .content {
-      margin-top: 0.08rem;
-      border: 0.016rem solid #fff;
-      .card {
-        position: relative;
-        transition: all 0.75s;
-        left: 0;
-        top: 0;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        font-size: 0.2rem;
-        &:hover {
-          transition: all 0s !important;
-          color: #000;
-          background-color: #fff;
-        }
-      }
-    }
-    .foot {
+  }
+  .content {
+    margin-top: 0.08rem;
+    border: 0.016rem solid #fff;
+    .card {
+      position: relative;
+      transition: all 0.75s;
+      left: 0;
+      top: 0;
       display: flex;
       flex-direction: row;
       align-items: center;
-      height: 0.28rem;
-      margin-top: 0.08rem;
-      span {
-        margin-right: 0.16rem;
-        color: #aaa;
-      }
-      .selectAll {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
-      .getData {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
-        height: 100%;
-        line-height: 0.28rem;
-        text-align: center;
-        border: 0.016rem solid #fff;
-        &:hover {
-          background-color: #fff;
-          color: #000;
-        }
+      font-size: 0.2rem;
+      &:hover {
+        transition: all 0s !important;
+        color: #000;
+        background-color: #fff;
       }
     }
   }
+  .foot {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 0.28rem;
+    margin-top: 0.08rem;
+    span {
+      margin-right: 0.16rem;
+      color: #aaa;
+    }
+    .selectAll {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .getData {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      line-height: 0.28rem;
+      text-align: center;
+      border: 0.016rem solid #fff;
+      &:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+  }
+}
 </style>

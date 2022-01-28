@@ -22,6 +22,6 @@ Vue.use(MenuItemGroup);
 Vue.use(Submenu);
 
 new Vue({
-  render: h => h(App),
+  render: (h) => h(App),
   router /* : router */, //前后一致可以省略
 }).$mount('#app');

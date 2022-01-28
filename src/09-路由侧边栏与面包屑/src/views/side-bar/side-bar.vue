@@ -23,35 +23,35 @@
   </div>
 </template>
 <script>
-  import sideItem from './childCops/side-item.vue';
-  export default {
-    components: { sideItem },
-    data() {
-      return { routes: [] };
-    },
-    computed: {},
-    created() {
-      this.routes = this.$router.options.routes;
-    },
-  };
+import sideItem from './childCops/side-item.vue';
+export default {
+  components: { sideItem },
+  data() {
+    return { routes: [] };
+  },
+  computed: {},
+  created() {
+    this.routes = this.$router.options.routes;
+  },
+};
 </script>
 <style scoped lang="less">
-  .side-bar {
+.side-bar {
+  display: flex;
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+  .side-items {
+    min-width: 300px;
     display: flex;
-    height: 100%;
-    background-color: #000;
-    overflow: hidden;
-    .side-items {
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-    .box {
-      position: relative;
-      flex: 1;
-      background-color: #111;
-    }
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
+  .box {
+    position: relative;
+    flex: 1;
+    background-color: #111;
+  }
+}
 </style>

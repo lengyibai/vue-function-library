@@ -14,53 +14,53 @@
   </div>
 </template>
 <script>
-  import SingleSingle from './views/SingleSingle.vue';
-  import SingleMultiple from './views/SingleMultiple.vue';
-  import MultipleSingle from './views/MultipleSingle.vue';
-  import MultipleMultiple from './views/MultipleMultiple.vue';
-  export default {
-    name: '',
-    components: {
-      SingleSingle,
-      SingleMultiple,
-      MultipleSingle,
-      MultipleMultiple,
+import SingleSingle from './views/SingleSingle.vue';
+import SingleMultiple from './views/SingleMultiple.vue';
+import MultipleSingle from './views/MultipleSingle.vue';
+import MultipleMultiple from './views/MultipleMultiple.vue';
+export default {
+  name: '',
+  components: {
+    SingleSingle,
+    SingleMultiple,
+    MultipleSingle,
+    MultipleMultiple,
+  },
+  data() {
+    return {
+      data: '',
+    };
+  },
+  methods: {
+    getData(data) {
+      setTimeout(() => {
+        this.data = data;
+      }, 750);
     },
-    data() {
-      return {
-        data: '',
-      };
-    },
-    methods: {
-      getData(data) {
-        setTimeout(() => {
-          this.data = data;
-        }, 750);
-      },
-    },
-  };
+  },
+};
 </script>
 <style scoped lang="less">
-  * {
-    line-height: 1.25;
-  }
-  .App {
-    height: 100vh;
+* {
+  line-height: 1.25;
+}
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  .data {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #000;
-    color: #fff;
-    .data {
-      display: flex;
-      height: 1.3333rem;
-      font-size: 0.3333rem;
-    }
-    .box {
-      width: 100vw;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-    }
+    height: 1.3333rem;
+    font-size: 0.3333rem;
   }
+  .box {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
 </style>

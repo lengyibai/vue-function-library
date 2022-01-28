@@ -6,7 +6,6 @@ module.exports = {
     proxy: {
       '/upload': {
         target: 'https://www.tuchuangs.com',
-        //访问路径重写
         pathRewrite: {
           '^/upload': '',
         },

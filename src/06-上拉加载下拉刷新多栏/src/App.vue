@@ -4,11 +4,11 @@
   </div>
 </template>
 <script>
-  import MultiColumn from './views/MultiColumn.vue';
-  export default {
-    name: '',
-    components: {
-      MultiColumn,
-    },
-  };
+import MultiColumn from './views/MultiColumn.vue';
+export default {
+  name: '',
+  components: {
+    MultiColumn,
+  },
+};
 </script>

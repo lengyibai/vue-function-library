@@ -21,11 +21,11 @@ export function postReq(name, url, data, other = {}) {
 
 //#####·········拦截器··········#####//
 //####·······请求拦截器········####//
-axios.interceptors.request.use(config => {
+axios.interceptors.request.use((config) => {
   // config.headers.token = localStorage.getItem('token');
   return config;
 });
 //####·······响应拦截器········####//
-axios.interceptors.response.use(res => {
+axios.interceptors.response.use((res) => {
   return res;
 });

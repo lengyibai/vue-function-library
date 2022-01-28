@@ -27,86 +27,86 @@
   </div>
 </template>
 <script>
-  ////···············公共组件···············////
-  /* 注意：目前用于只是用于测试，所以使用同一个组件，实际开发每栏的内容都不同，所以需要引入三个不一样的上拉刷新下拉加载组件 */
-  import SingleColumn from './SingleColumn.vue';
-  export default {
-    props: {},
-    data() {
-      return {
-        tabName: ['one', 'two', 'three'],
-        currentIndex: 0,
-        // tab栏标签页懒加载
-        cache: [true, false, false],
-      };
+////···············公共组件···············////
+/* 注意：目前用于只是用于测试，所以使用同一个组件，实际开发每栏的内容都不同，所以需要引入三个不一样的上拉刷新下拉加载组件 */
+import SingleColumn from './SingleColumn.vue';
+export default {
+  props: {},
+  data() {
+    return {
+      tabName: ['one', 'two', 'three'],
+      currentIndex: 0,
+      // tab栏标签页懒加载
+      cache: [true, false, false],
+    };
+  },
+  components: {
+    SingleColumn,
+  },
+  methods: {
+    //#####··········tab栏点击··········#####//
+    tabClick(index) {
+      // tab栏标签页懒加载
+      this.cache[index] = true;
+      this.currentIndex = index;
+      this.$refs.slide.style.transform = `translateX(-${index * 100}%)`;
     },
-    components: {
-      SingleColumn,
-    },
-    methods: {
-      //#####··········tab栏点击··········#####//
-      tabClick(index) {
-        // tab栏标签页懒加载
-        this.cache[index] = true;
-        this.currentIndex = index;
-        this.$refs.slide.style.transform = `translateX(-${index * 100}%)`;
-      },
-    },
-  };
+  },
+};
 </script>
 <style scoped lang="less">
-  .MultiColumn {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    // tab栏整体
-    .tab {
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      color: #aaa;
-      height: 50px;
-      // tab栏标签
-      .tab-item {
-        flex: 1;
-        font-size: 25px;
-        text-align: center;
-        line-height: 50px;
-      }
-      .foil {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        transition: all 0.25s;
-        &::before {
-          content: '';
-          position: absolute;
-          width: 25%;
-          height: 3px;
-          background-color: #000;
-          bottom: 5px;
-        }
-      }
+.MultiColumn {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  // tab栏整体
+  .tab {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #aaa;
+    height: 50px;
+    // tab栏标签
+    .tab-item {
+      flex: 1;
+      font-size: 25px;
+      text-align: center;
+      line-height: 50px;
     }
-    // 滑动位置
-    .slide {
+    .foil {
+      position: absolute;
       display: flex;
+      justify-content: center;
       width: 100%;
-      height: calc(100vh - 50px);
+      height: 100%;
       transition: all 0.25s;
-      .slide-item {
-        width: 100%;
-        height: 100%;
-        flex-shrink: 0;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 25%;
+        height: 3px;
+        background-color: #000;
+        bottom: 5px;
       }
     }
   }
-  .active {
-    transition: all 0.1s;
-    font-size: 30px !important;
-    color: #000 !important;
+  // 滑动位置
+  .slide {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 50px);
+    transition: all 0.25s;
+    .slide-item {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+    }
   }
+}
+.active {
+  transition: all 0.1s;
+  font-size: 30px !important;
+  color: #000 !important;
+}
 </style>

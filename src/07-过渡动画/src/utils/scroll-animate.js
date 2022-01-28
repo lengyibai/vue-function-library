@@ -1,4 +1,4 @@
-function translate1(el) {
+export function translate1(el) {
   el.style.transform = `translateY(-200%)`;
 }
 export function translate2(el) {
@@ -160,15 +160,17 @@ export function $lybS2(obj, animats) {
       animate(item, animats);
     }
   }
-  el.forEach(item => {
+  el.forEach((item) => {
     try {
       if (item.length) {
-        item.forEach(item => {
+        item.forEach((item) => {
           lyb(item, animate, time);
         });
       } else {
         lyb(item, animate, time);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   });
 }

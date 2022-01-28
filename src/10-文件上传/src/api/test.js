@@ -23,6 +23,6 @@ export const getMovie = (page, other) => {
       pageno: page,
       callback: '',
     },
-    other,
+    other
   );
 };

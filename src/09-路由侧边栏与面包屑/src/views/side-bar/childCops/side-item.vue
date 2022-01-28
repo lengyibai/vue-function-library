@@ -6,7 +6,7 @@
         <!-- index决定是否展开 -->
         <el-submenu :index="route.path" :key="route.path">
           <template slot="title">
-            <span style="font-size: 25px;color:#fff">
+            <span style="font-size: 25px; color: #fff">
               {{ route.meta.title }}
             </span>
           </template>
@@ -21,7 +21,7 @@
           :index="route.meta.full_path"
           :key="route.path"
           v-if="route.meta"
-          style="font-size: 25px;"
+          style="font-size: 25px"
         >
           <span slot="title">{{ route.meta.title }}</span>
         </el-menu-item>
@@ -30,16 +30,16 @@
   </div>
 </template>
 <script>
-  export default {
-    name: 'side-item',
-    props: {
-      routes: {
-        type: Array,
-        required: true,
-        default() {
-          return [];
-        },
+export default {
+  name: 'side-item',
+  props: {
+    routes: {
+      type: Array,
+      required: true,
+      default() {
+        return [];
       },
     },
-  };
+  },
+};
 </script>
