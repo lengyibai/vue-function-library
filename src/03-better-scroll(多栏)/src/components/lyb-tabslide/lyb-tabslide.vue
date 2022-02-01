@@ -81,7 +81,7 @@ export default {
       &::before {
         content: '';
         position: absolute;
-        width: 25%;
+        width: 10%;
         height: 3px;
         background-color: #000;
         bottom: 5px;
