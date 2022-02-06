@@ -93,12 +93,14 @@ export default {
 .del-leave-active {
   transition-delay: 0s !important;
   transform: translateX(100%) rotateZ(-360deg) scale(0) !important;
-  height: 0;
-  overflow: hidden;
 }
 .del-move,
 .del-enter-active,
 .del-leave-active {
   transition: all 0.5s;
+}
+
+.del-leave-active {
+  position: absolute;
 }
 </style>
