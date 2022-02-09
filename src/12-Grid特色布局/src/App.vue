@@ -1,7 +1,7 @@
 <template>
   <div class="App">
-    <grid-number v-if="true" />
-    <grid-letter v-if="true" />
+    <grid-number v-if="true" style="margin-bottom: 5px" />
+    <grid-letter v-if="true" style="margin-bottom: 5px" />
     <grid-layout v-if="true" />
   </div>
 </template>

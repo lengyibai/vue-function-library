@@ -9,7 +9,7 @@
         :y="item[1]"
         :countX="item[2]"
         :countY="item[3]"
-        :key="index"
+        :key="index + '1'"
         >{{ index + 1 }}</lyb-grid-number
       >
     </transition-group>
