@@ -99,9 +99,9 @@
       leaveY: 1000, //需要滚动多少距离才能完成出场
       /**
        * @description: 滚动回调
-       * @param {number} p 滚动进度，0-1
-       * @param {number} i 滚动至 to 坐标后开始记录从零开始的滚动距离，可用于出场动画，出场动画必须设置 translateY(${-y}px)，否则无法出场
-       * @param {number} l 出场百分比
+       * @param {Number} p 滚动进度，0-1
+       * @param {Number} i 滚动至 to 坐标后开始记录从零开始的滚动距离，可用于出场动画，出场动画必须设置 translateY(${-y}px)，否则无法出场
+       * @param {Number} l 出场百分比
        */
       map: (p, i, l) => {
         son1.style.left = `${p * 50 }%`
