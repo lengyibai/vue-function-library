@@ -70,7 +70,7 @@ export default {
     height: 100%;
     font-size: 35px;
     writing-mode: vertical-lr;
-    background-color: red;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
