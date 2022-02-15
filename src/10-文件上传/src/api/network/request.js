@@ -2,11 +2,9 @@ import axios from 'axios';
 axios.defaults.timeout = 30000;
 
 //#####··········域名管理··········#####//
-import apiConfig from '@/config/api.config.js';
-
 const server = axios.create({
-  baseURL: apiConfig.upload,
-  time: 1000,
+  baseURL: process.env.VUE_APP_UPLOAD,
+  time: 10000,
 });
 
 //#####·········配置默认请求··········#####//
@@ -19,5 +17,5 @@ const server = axios.create({
  * @return {Promise} 接口请求
  */
 export function postReq(url, data, other = {}) {
-  return server({ url, data, ...other });
+  return server({ method: 'POST', url, data, ...other });
 }
