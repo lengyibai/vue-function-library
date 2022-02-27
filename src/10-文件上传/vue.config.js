@@ -5,7 +5,7 @@ module.exports = {
     hot: true,
     proxy: {
       '/upload': {
-        target: 'https://www.tuchuangs.com',
+        target: 'https://jsonplaceholder.typicode.com',
         pathRewrite: {
           '^/upload': '',
         },
