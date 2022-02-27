@@ -1,5 +1,5 @@
 //节流（延迟执行）
-export function $lybF5(fn, delay) {
+export function $throttle(fn, delay) {
   let valid = true;
   return () => {
     if (!valid) {
