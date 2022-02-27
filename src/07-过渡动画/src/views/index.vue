@@ -63,8 +63,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 35vw;
+  height: 35vw;
+  max-width: 200px;
+  max-height: 200px;
   color: #fff;
   cursor: pointer;
   user-select: none;
@@ -73,7 +75,8 @@ export default {
   .Box();
   .son {
     .Box();
-    background-color: #000;
+    font-size: 18px;
+    border: 3px solid #fff;
     &:hover {
       color: #999;
     }
