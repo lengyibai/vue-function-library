@@ -300,7 +300,6 @@ export default {
         upload(data, {
           //获取上传进度
           onUploadProgress(pre) {
-            console.log(pre);
             file.pre = Math.round((pre.loaded / pre.total) * 100) + '%';
           },
 
