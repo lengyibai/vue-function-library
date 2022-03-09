@@ -1,9 +1,10 @@
 <template>
   <div class="app">
-    <button @click="fn" style="width: 125px; height: 55px">
+    <button @click="fn" style="width: 125px; height: 55px; margin-bottom: 10px">
       开启{{ multiple }}文件上传
     </button>
     <lyb-upload
+      :size="1"
       :multiple="multiple !== '多'"
       url="https://jsonplaceholder.typicode.com/posts/"
       @finish="finish"

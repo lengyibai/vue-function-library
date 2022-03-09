@@ -28,17 +28,23 @@
                 : item.pre
             }}</span
           >
-          <span class="lyb-one-line" :class="{ failFc: item.isFail }">{{
-            item.pre == 0
-              ? item.name
-              : item.pre == '100%'
-              ? item.isFail
-                ? '未成功'
-                : '等待响应'
-              : '上传中'
-          }}</span>
+          <marquee v-if="item.pre === 0">{{ item.name }}</marquee>
+          <span
+            v-if="item.pre !== 0"
+            class="lyb-one-line"
+            :class="{ failFc: item.isFail }"
+            >{{
+              item.pre == 0
+                ? item.name
+                : item.pre == '100%'
+                ? item.isFail
+                  ? '未成功'
+                  : '等待响应'
+                : '上传中'
+            }}</span
+          >
           <span class="lyb-one-line">{{
-            item.pre == 0 ? item.size[2] : ''
+            item.pre === 0 ? item.size[2] : ''
           }}</span>
         </div>
         <!-- 右上角上传完成 -->
@@ -71,7 +77,7 @@
       </div>
 
       <!-- 添加图片 -->
-      <div class="box1" key="a">
+      <div class="box1" key="a" :value="[]">
         <!-- 加上 :value="[]" 可重复上传文件，但不推荐 -->
         <input
           type="file"
@@ -99,7 +105,7 @@ import axios from 'axios';
 import { $getFileSuf, $fmtByte } from './lyb.js';
 import lybIcon from './childComp/lyb-icon/lyb-icon.vue';
 export default {
-  name: 'lyb-up-load',
+  name: 'lyb-upload',
   props: {
     name: {
       type: String,
@@ -112,6 +118,10 @@ export default {
     multiple: {
       type: Boolean,
       default: false,
+    },
+    size: {
+      type: Number,
+      default: 0,
     },
   },
   components: { lybIcon },
@@ -157,14 +167,14 @@ export default {
       });
     },
   },
-  created() {
-    console.log(this.multiple);
-  },
   methods: {
+    //#####··········拖拽进入··········#####//
     dragover(e) {
       console.log('进入拖拽范围');
       e.preventDefault();
     },
+
+    //#####··········结束拖拽··········#####//
     drop(e) {
       e.preventDefault();
       let file = [...e.dataTransfer.items].map((item) => {
@@ -172,8 +182,18 @@ export default {
           return item.getAsFile();
         }
       });
-      this.filePreview(file);
+      if (file.length > 1) {
+        if (this.multiple) {
+          this.filePreview(file);
+        } else {
+          alert('只能选择一个文件');
+        }
+      } else {
+        this.filePreview(file);
+      }
     },
+
+    //#####··········拖拽离开··········#####//
     dragleave() {
       console.log('拖拽离开');
     },
@@ -194,9 +214,22 @@ export default {
 
     //#####··········文件选择完成后触发··········#####//
     filePreview(file = false) {
-      this.select_show = false;
       //获取文件列表
       const fileList = file || this.$refs.file.files;
+      let failFiles = [];
+      [...fileList].forEach((item) => {
+        if (item.size > this.size * 1024 * 1024 && this.size !== 0) {
+          failFiles.push(item.name);
+        }
+      });
+      console.log(failFiles);
+      if (failFiles.length) {
+        alert(
+          `只能上传小于等于${
+            this.size
+          }MB的文件，以下文件上传失败：\n${failFiles.join('\n')}`
+        );
+      }
       //用于匹配图标
       let icon = {
         compress: require('./icon/compress.svg'),
@@ -213,9 +246,10 @@ export default {
 
       //通过循环，给文件对象添加相应属性（当前fileList不是一个真实数组，通过扩展运算符转换）
       [...fileList].forEach((item) => {
+        if (item.size > this.size * 1024 * 1024 && this.size !== 0) return;
+        this.select_show = false;
         //通过获取文件后缀判断文件类型
         let type = this.fileIcon($getFileSuf(item.name));
-
         //将文件主要信息单独存储
         this.fileList.push({
           id: this.fileList.length + new Date().getTime(), //文件 id
@@ -314,7 +348,6 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   .imgBox {
     width: 100px;
@@ -323,11 +356,10 @@ export default {
     display: flex;
     flex-shrink: 0;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 5px;
+    margin: 0 5px 5px 0;
     overflow: hidden;
-    outline: 3px solid #ddd;
+    border: 2px solid #ddd;
     img {
       width: 100%;
       height: 100%;

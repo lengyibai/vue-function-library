@@ -11,5 +11,5 @@ export function $fmtByte(bytes) {
     sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
     i = Math.floor(Math.log(bytes) / Math.log(k));
   size = (bytes / k ** i).toFixed(2) ? (bytes / k ** i).toFixed(2) : 0;
-  return [size, sizes[i], `${size} ${sizes[i]}`];
+  return [parseFloat(size), sizes[i], `${size} ${sizes[i]}`];
 }
