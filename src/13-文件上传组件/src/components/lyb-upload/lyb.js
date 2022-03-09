@@ -13,3 +13,15 @@ export function $fmtByte(bytes) {
   size = (bytes / k ** i).toFixed(2) ? (bytes / k ** i).toFixed(2) : 0;
   return [parseFloat(size), sizes[i], `${size} ${sizes[i]}`];
 }
+
+export function $urlFileType(url, type) {
+  const obj = {
+    image: ['jpeg', 'jpg', 'png', 'webp', 'bmp', 'gif', 'svg'],
+    video: ['avi', 'mov', 'rmvb', 'rm', 'flv', 'mp4', '3gp'],
+  };
+  if (type instanceof Array) {
+    return type.includes(url.replace(/.+\./, '').toLowerCase());
+  } else {
+    return obj[type].includes(url.replace(/.+\./, '').toLowerCase());
+  }
+}

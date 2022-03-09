@@ -77,8 +77,7 @@
       </div>
 
       <!-- 添加图片 -->
-      <div class="box1" key="a" :value="[]">
-        <!-- 加上 :value="[]" 可重复上传文件，但不推荐 -->
+      <div class="box1" key="a">
         <input
           type="file"
           ref="file"
@@ -87,6 +86,7 @@
           @change="filePreview()"
           key="b"
           :multiple="multiple"
+          accep="image"
         />
         <label for="select" v-show="select_show || multiple">
           <div
@@ -102,7 +102,7 @@
 </template>
 <script>
 import axios from 'axios';
-import { $getFileSuf, $fmtByte } from './lyb.js';
+import { $getFileSuf, $fmtByte, $urlFileType } from './lyb.js';
 import lybIcon from './childComp/lyb-icon/lyb-icon.vue';
 export default {
   name: 'lyb-upload',
@@ -216,19 +216,39 @@ export default {
     filePreview(file = false) {
       //获取文件列表
       const fileList = file || this.$refs.file.files;
-      let failFiles = [];
+      let failFiles_suffix = [];
+      let failFiles_size = [];
+      let failFiles_suffix_pass = [];
+
+      /* 文件类型验证 */
       [...fileList].forEach((item) => {
-        if (item.size > this.size * 1024 * 1024 && this.size !== 0) {
-          failFiles.push(item.name);
+        if ($urlFileType(item.name, 'image')) {
+          failFiles_suffix_pass.push(item);
+        } else {
+          failFiles_suffix.push(item.name);
         }
       });
-      console.log(failFiles);
-      if (failFiles.length) {
+      if (failFiles_suffix.length) {
+        alert(
+          `只能上传图片，以下文件上传失败：\n${failFiles_suffix.join('\n')}`
+        );
+        failFiles_suffix = [];
+      }
+
+      /* 文件大小验证 */
+      [...failFiles_suffix_pass].forEach((item) => {
+        if (item.size > this.size * 1024 * 1024 && this.size !== 0) {
+          failFiles_size.push(item.name);
+        }
+      });
+      if (failFiles_size.length) {
         alert(
           `只能上传小于等于${
             this.size
-          }MB的文件，以下文件上传失败：\n${failFiles.join('\n')}`
+          }MB的文件，以下文件上传失败：\n${failFiles_size.join('\n')}`
         );
+        failFiles_size = [];
+        failFiles_suffix_pass = [];
       }
       //用于匹配图标
       let icon = {
@@ -246,7 +266,11 @@ export default {
 
       //通过循环，给文件对象添加相应属性（当前fileList不是一个真实数组，通过扩展运算符转换）
       [...fileList].forEach((item) => {
-        if (item.size > this.size * 1024 * 1024 && this.size !== 0) return;
+        if (
+          (item.size > this.size * 1024 * 1024 && this.size !== 0) ||
+          !$urlFileType(item.name, 'image')
+        )
+          return;
         this.select_show = false;
         //通过获取文件后缀判断文件类型
         let type = this.fileIcon($getFileSuf(item.name));
@@ -268,6 +292,8 @@ export default {
       });
 
       this.uploadClick();
+      /* 文件上传后清除输入框值，可重复上传 */
+      this.$refs.file.value = '';
     },
 
     //#####··········点击开始上传后触发··········#####//
