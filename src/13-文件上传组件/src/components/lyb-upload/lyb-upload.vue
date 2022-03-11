@@ -123,6 +123,12 @@ export default {
       type: Number,
       default: 0,
     },
+    /* 只能上传什么类型的文件，可传递字符串和数组，字符串只能传递image或video，代表只能上传图片或视频，传递数组则只能上传只能后缀的文件，数组内为文件后缀名 */
+    suffix: {
+      default() {
+        return false;
+      },
+    },
   },
   components: { lybIcon },
   data() {
@@ -222,10 +228,14 @@ export default {
 
       /* 文件类型验证 */
       [...fileList].forEach((item) => {
-        if ($urlFileType(item.name, 'image')) {
-          failFiles_suffix_pass.push(item);
+        if (this.suffix) {
+          if ($urlFileType(item.name, this.suffix)) {
+            failFiles_suffix_pass.push(item);
+          } else {
+            failFiles_suffix.push(item.name);
+          }
         } else {
-          failFiles_suffix.push(item.name);
+          failFiles_suffix_pass.push(item);
         }
       });
       if (failFiles_suffix.length) {
@@ -234,7 +244,6 @@ export default {
         );
         failFiles_suffix = [];
       }
-
       /* 文件大小验证 */
       [...failFiles_suffix_pass].forEach((item) => {
         if (item.size > this.size * 1024 * 1024 && this.size !== 0) {
@@ -263,14 +272,16 @@ export default {
         video: require('./icon/video.svg'),
         word: require('./icon/word.svg'),
       };
-
       //通过循环，给文件对象添加相应属性（当前fileList不是一个真实数组，通过扩展运算符转换）
       [...fileList].forEach((item) => {
-        if (
-          (item.size > this.size * 1024 * 1024 && this.size !== 0) ||
-          !$urlFileType(item.name, 'image')
-        )
-          return;
+        if (this.suffix) {
+          if (
+            (item.size > this.size * 1024 * 1024 && this.size !== 0) ||
+            !$urlFileType(item.name, this.suffix)
+          )
+            return;
+        }
+
         this.select_show = false;
         //通过获取文件后缀判断文件类型
         let type = this.fileIcon($getFileSuf(item.name));
