@@ -47,7 +47,7 @@ export default {
     width: 100%;
     height: calc(100% - 0.651rem - @padding);
     align-items: stretch;
-    background-color: #e67e22;
+    background-color: #f39c12;
     padding: @padding;
     @media screen and (max-width: 750px) {
       flex-direction: column;
@@ -82,8 +82,7 @@ export default {
       font-size: 0.3255rem;
       overflow: auto;
       padding: @padding;
-      @media screen and (max-width: 750px) {
-        width: 100%;
+      @media screen and (max-width: 840px) {
         grid-template-columns: repeat(3, 1fr);
       }
       @media screen and (max-width: 480px) {
@@ -95,8 +94,11 @@ export default {
       .box {
         height: 1.3021rem;
         background-color: #8e44ad;
+        @media screen and (max-width: 840px) {
+          height: 1.9531rem;
+        }
         @media screen and (max-width: 480px) {
-          height: 2.6042rem;
+          height: 1.9531rem;
         }
       }
     }

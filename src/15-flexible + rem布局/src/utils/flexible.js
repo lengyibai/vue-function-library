@@ -6,7 +6,7 @@
 
     rem = el.clientWidth / 10;
     /* 当缩小到一定距离时时，增加大小作为过小补偿 */
-    if (rem < 96) {
+    if (rem < 64) {
       rem *= 1.5;
     }
     el.style.fontSize = rem + "px";
