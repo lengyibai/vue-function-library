@@ -9,7 +9,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/00
+> http://lengyibai.gitee.io/vue-library/00
 
 **详细介绍**
 
@@ -25,7 +25,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/01
+> http://lengyibai.gitee.io/vue-library/01
 
 **内置两种方案**
 
@@ -39,7 +39,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/02
+> http://lengyibai.gitee.io/vue-library/02
 
 **详细介绍**
 
@@ -55,7 +55,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/03
+> http://lengyibai.gitee.io/vue-library/03
 
 **详细介绍**
 
@@ -73,7 +73,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/04
+> http://lengyibai.gitee.io/vue-library/04
 
 **详细介绍**
 
@@ -113,7 +113,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/07
+> http://lengyibai.gitee.io/vue-library/07
 
 **详细介绍**
 
@@ -127,7 +127,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/08
+> http://lengyibai.gitee.io/vue-library/08
 
 **详细介绍**
 
@@ -137,7 +137,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/09
+> http://lengyibai.gitee.io/vue-library/09
 
 **详细介绍**
 
@@ -151,7 +151,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/10
+> http://lengyibai.gitee.io/vue-library/10
 
 **详细介绍**
 
@@ -175,7 +175,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/11
+> http://lengyibai.gitee.io/vue-library/11
 
 **主要功能如下：**
 
@@ -189,7 +189,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/12
+> http://lengyibai.gitee.io/vue-library/12
 
 **主要功能如下：**
 
@@ -201,7 +201,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/13
+> http://lengyibai.gitee.io/vue-library/13
 
 **详细介绍**
 
@@ -217,7 +217,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/14
+> http://lengyibai.gitee.io/vue-library/14
 
 **详细介绍**
 
@@ -231,7 +231,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-library/preview/15
+> http://lengyibai.gitee.io/vue-library/15
 
 **详细介绍**
 
