@@ -1,4 +1,4 @@
-<img src="http://lengyibai.gitee.io/img-bed/img/lyb.png" style="width:200px;margin:0 auto;border-radius:50%" />
+<img src="https://lengyibai-img-bed.netlify.app/img/lyb.png" style="width:200px;margin:0 auto;border-radius:50%" />
 
 <p style="font-size:50px;font-weight:bold;width:100%;text-align:center;color:#fff;text-shadow:0 0 15px">冷弋白</p>
 <p style="text-align:center;color:#aaa;position: relative;top:-10px;text-shadow:0 0 10px"><a href='https://wpa.qq.com/msgrd?v=3&uin=1329670984&site=qq&menu=yes' style='text-decoration: none;
@@ -9,7 +9,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/00
+> https://bejewelled-biscuit-15590b.netlify.app/dist/00
 
 **详细介绍**
 
@@ -25,7 +25,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/01
+> https://bejewelled-biscuit-15590b.netlify.app/dist/01
 
 **内置两种方案**
 
@@ -39,7 +39,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/02
+> https://bejewelled-biscuit-15590b.netlify.app/dist/02
 
 **详细介绍**
 
@@ -55,7 +55,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/03
+> https://bejewelled-biscuit-15590b.netlify.app/dist/03
 
 **详细介绍**
 
@@ -73,7 +73,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/04
+> https://bejewelled-biscuit-15590b.netlify.app/dist/04
 
 **详细介绍**
 
@@ -113,7 +113,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/07
+> https://bejewelled-biscuit-15590b.netlify.app/dist/07
 
 **详细介绍**
 
@@ -127,7 +127,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/08
+> https://bejewelled-biscuit-15590b.netlify.app/dist/08
 
 **详细介绍**
 
@@ -137,7 +137,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/09
+> https://bejewelled-biscuit-15590b.netlify.app/dist/09
 
 **详细介绍**
 
@@ -151,7 +151,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/10
+> https://bejewelled-biscuit-15590b.netlify.app/dist/10
 
 **详细介绍**
 
@@ -175,7 +175,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/11
+> https://bejewelled-biscuit-15590b.netlify.app/dist/11
 
 **主要功能如下：**
 
@@ -189,7 +189,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/12
+> https://bejewelled-biscuit-15590b.netlify.app/dist/12
 
 **主要功能如下：**
 
@@ -201,7 +201,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/13
+> https://bejewelled-biscuit-15590b.netlify.app/dist/13
 
 **详细介绍**
 
@@ -217,7 +217,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/14
+> https://bejewelled-biscuit-15590b.netlify.app/dist/14
 
 **详细介绍**
 
@@ -231,7 +231,7 @@
 
 **演示地址**
 
-> http://lengyibai.gitee.io/vue-function-library/15
+> https://bejewelled-biscuit-15590b.netlify.app/dist/15
 
 **详细介绍**
 

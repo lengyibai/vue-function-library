@@ -17,19 +17,19 @@ export default {
       links: [
         {
           name: "锚点路由",
-          href: "http://lengyibai.gitee.io/vue-library/preview/01",
+          href: "https://lengyibai-vue2-function-library.netlify.app/dist/01",
         },
         {
           name: "单多选",
-          href: "http://lengyibai.gitee.io/vue-library/preview/04",
+          href: "https://lengyibai-vue2-function-library.netlify.app/dist/04",
         },
         {
           name: "购物车",
-          href: "http://lengyibai.gitee.io/vue-library/preview/08",
+          href: "https://lengyibai-vue2-function-library.netlify.app/dist/08",
         },
         {
           name: "文件上传",
-          href: "http://lengyibai.gitee.io/vue-library/preview/10",
+          href: "https://lengyibai-vue2-function-library.netlify.app/dist/10",
         },
       ],
     };
